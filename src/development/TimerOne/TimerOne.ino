@@ -2,9 +2,7 @@
 // https://github.com/PaulStoffregen/TimerOne
 // can be installed using Arduino IDE's library manager
 
-// # TODO test !!
-
-#define pin_buzzer 9
+#define pin_buzzer 9 // 11 for Arduino MEGA
 
 unsigned long previousMillis = 0;
 unsigned int previousAmplitude = 0;
@@ -12,6 +10,7 @@ boolean beeping = false;
 
 void setup() {
   // put your setup code here, to run once:
+  //pinMode(pin_buzzer, OUTPUT); // not needed
   Serial.begin(9600);
   Timer1.initialize();
 
@@ -31,9 +30,11 @@ void loop() {
       _noTone();
     }
     else {
-      prevousAmplitude += 100;
+      previousAmplitude += 100;
       if (previousAmplitude >= 1000) previousAmplitude = 0;
       _tone(1000, previousAmplitude);
+    }
+    previousMillis = millis();
   }
 
 
@@ -41,7 +42,7 @@ void loop() {
   Serial.println("t");
   // this tests if Serial can be used normally
   // (there were some issues reported in the past)
-  delay(500);
+  delay(250);
 
 }
 
@@ -51,10 +52,13 @@ void _tone(unsigned int frequency, unsigned int duty) {
   unsigned long period = 1000000 / frequency;
 
   Timer1.setPeriod(period);
-  Timer1.PWM(pin_buzzer, duty);
-
+  Timer1.pwm(pin_buzzer, duty);
+  Serial.print("period: ");
+  Serial.println(period);
+  Serial.print("duty: ");
+  Serial.println(duty);
 }
 
 void _noTone() {
-  Timer1.disablePWM(pin_buzzer);
+  Timer1.disablePwm(pin_buzzer);
 }

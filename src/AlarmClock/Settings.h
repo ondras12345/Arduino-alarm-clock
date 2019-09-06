@@ -42,7 +42,7 @@ Pins
 #define pin_ambient 6 // PWM
 #define pin_lamp 7
 #define pin_LCD_enable 8
-#define pin_buzzer 9 // PWM, TimerOne
+#define pin_buzzer 9 // PWM, TimerOne (11 for Arduino MEGA)
 // 10, 11, 12, 13, A0 - reserved for SPI (eg. ethernet)
 // A4, A5 - I2C
 
