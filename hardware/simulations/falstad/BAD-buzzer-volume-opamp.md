@@ -1,8 +1,15 @@
 # Buzzer volume adjustment (with opamp)
 __WARNING__: WIP, this is still under development
 
+## BAD
+This won't work as 'passive buzzers' are not piezos, they are electromechanical.
+
+Replace the 'passive buzzer' by a 8ohm 0.25W speaker and make a new amplifier
+circuit for it.
+
+## Description
 This circuit can be used to adjust the buzzer's volume. This is achieved by
-decreasing the voltage across the buzzer.
+decreasing the voltage across the buzzer. The buzzer must be passive.
 
 The buzzer is represented by a 1k resistor in series with a 100n capacitor,
 the AC source represents the volume adjustment input (filtered PWM will
@@ -16,10 +23,10 @@ The voltage divider on the feedback loop is there to make the window where
 the voltage across the buzzer is zero wider (so that it's possible to set zero
 volume with non-zero voltage).
 
-I'd like to avoid using the opamp.
-
 ## TODO
 - Do not use an opamp
+- BAD ?? (measuring voltage drop across the series connection of the capacitor
+  and the resistor while only the capacitor matters)
 
 ## Source
 ```
