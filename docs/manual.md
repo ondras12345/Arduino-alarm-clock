@@ -19,6 +19,16 @@ after the set time, but it can be manually disabled by holding the 'stop' button
 4x longer than for a normal
 It is indicated by the LED.
 
+
+## Buzzer
+### Melody
+If you have a passive buzzer connected to the alarm clock and the feature is
+enabled in Settings.h, you can define a melody that will be used. This melody
+is stored in the EEPROM and can be read or written from the Serial CLI.
+
+See [melody.md](melody.md) for more info.
+
+
 # Configuration
 ## Compile-time
 Edit the file `src/AlarmClock/Settings.h`  
